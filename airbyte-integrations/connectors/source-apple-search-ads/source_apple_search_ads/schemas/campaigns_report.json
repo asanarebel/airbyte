@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "campaignId": {
+      "type": "integer"
+    },
+    "startTime": {
+      "type": "string",
+      "format":"date-time"
+    },
+    "adamId": {
+      "type": "integer"
+    },
+    "countryOrRegion": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "campaignName": {
+          "type": "string"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "campaignStatus": {
+          "type": "string"
+        },
+        "app_appName": {
+          "type": "string"
+        },
+        "app_adamId": {
+          "type": "integer"
+        },
+        "servingStatus": {
+          "type": "string"
+        },
+        "servingStateReasons": {
+          "type": "null"
+        },
+        "countriesOrRegions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "modificationTime": {
+          "type": "string"
+        },
+        "totalBudget_amount": {
+          "type": "string"
+        },
+        "totalBudget_currency": {
+          "type": "string"
+        },
+        "dailyBudget_amount": {
+          "type": "string"
+        },
+        "dailyBudget_currency": {
+          "type": "string"
+        },
+        "displayStatus": {
+          "type": "string"
+        },
+        "supplySources": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "adChannelType": {
+          "type": "string"
+        },
+        "orgId": {
+          "type": "integer"
+        },
+        "billingEvent": {
+          "type": "string"
+        },
+        "countryOrRegion": {
+          "type": "string"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "impressions": {
+          "type": "integer"
+        },
+        "taps": {
+          "type": "integer"
+        },
+        "installs": {
+          "type": "integer"
+        },
+        "newDownloads": {
+          "type": "integer"
+        },
+        "redownloads": {
+          "type": "integer"
+        },
+        "latOnInstalls": {
+          "type": "integer"
+        },
+        "latOffInstalls": {
+          "type": "integer"
+        },
+        "ttr": {
+          "type": "number"
+        },
+        "avgCPA_amount": {
+          "type": "string"
+        },
+        "avgCPA_currency": {
+          "type": "string"
+        },
+        "avgCPT_amount": {
+          "type": "string"
+        },
+        "avgCPT_currency": {
+          "type": "string"
+        },
+        "avgCPM_amount": {
+          "type": "string"
+        },
+        "avgCPM_currency": {
+          "type": "string"
+        },
+        "localSpend_amount": {
+          "type": "string"
+        },
+        "localSpend_currency": {
+          "type": "string"
+        },
+        "conversionRate": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

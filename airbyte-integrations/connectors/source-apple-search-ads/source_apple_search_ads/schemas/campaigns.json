@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "orgId": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "budgetAmount": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "dailyBudgetAmount": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "adamId": {
+      "type": "integer"
+    },
+    "paymentModel": {
+      "type": "string"
+    },
+    "locInvoiceDetails": {
+      "type": "object",
+      "properties": {
+        "clientName": {
+          "type": "string"
+        },
+        "orderNumber": {
+          "type": "null"
+        },
+        "buyerName": {
+          "type": "string"
+        },
+        "buyerEmail": {
+          "type": "string"
+        },
+        "billingContactEmail": {
+          "type": "string"
+        }
+      }
+    },
+    "budgetOrders": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string",
+      "format":"date-time"
+    },
+    "endTime": {
+      "type": ["null","string"],
+      "format":"date-time"
+    },
+    "status": {
+      "type": "string"
+    },
+    "servingStatus": {
+      "type": "string"
+    },
+    "creationTime": {
+      "type": "string",
+      "format":"date-time"
+    },
+    "servingStateReasons": {
+      "type": "string"
+    },
+    "modificationTime": {
+      "type": "string",
+      "format":"date-time"
+    },
+    "deleted": {
+      "type": "boolean"
+    },
+    "sapinLawResponse": {
+      "type": "string"
+    },
+    "countriesOrRegions": {
+      "type": "string"
+    },
+    "countryOrRegionServingStateReasons": {
+      "type": "string"
+    },
+    "supplySources": {
+      "type": "string"
+    },
+    "adChannelType": {
+      "type": "string"
+    },
+    "billingEvent": {
+      "type": "string"
+    },
+    "displayStatus": {
+      "type": "string"
+    }
+  }
+}

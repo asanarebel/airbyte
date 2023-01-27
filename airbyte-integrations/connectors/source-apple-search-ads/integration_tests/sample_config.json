@@ -1,0 +1,9 @@
+{
+  "start_date": "2022-11-22",
+  "client_id": "SEARCHADS.2bc579b7-f531-4666-a16e-be610ec24811",
+  "org_id":"51370",
+  "team_id": "SEARCHADS.2bc579b7-f531-4666-a16e-be610ec24811",
+  "key_id": "7cf67b7a-3e0c-41b8-82df-d3cd87a6cb4e",
+  "key": "-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEIC0X3gE4fOl+N2O4IZ8iRJhVm4Pd4nKofZpaxuLeUC5GoAoGCCqGSM49\nAwEHoUQDQgAEzzdB3uZIrR5CSQmxeI+nvHzl+icE9qRF2RPYQnTaccQ2e1lRP1iP\nyti4nJICdFZWW2eSe9C6Jn3cSQ7vJd81Jg==\n-----END EC PRIVATE KEY-----",
+  "pem":"-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEzzdB3uZIrR5CSQmxeI+nvHzl+icE\n9qRF2RPYQnTaccQ2e1lRP1iPyti4nJICdFZWW2eSe9C6Jn3cSQ7vJd81Jg==\n-----END PUBLIC KEY-----"
+}

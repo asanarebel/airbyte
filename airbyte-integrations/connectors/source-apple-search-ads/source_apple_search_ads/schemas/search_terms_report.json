@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "keywordId": {
+          "type": "integer"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "matchType": {
+          "type": "string"
+        },
+        "bidAmount": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            }
+          }
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "keywordDisplayStatus": {
+          "type": "string"
+        },
+        "adGroupId": {
+          "type": "integer"
+        },
+        "adGroupName": {
+          "type": "string"
+        },
+        "adGroupDeleted": {
+          "type": "boolean"
+        },
+        "searchTermText": {
+          "type": ["null","string"]
+        },
+        "searchTermSource": {
+          "type": "string"
+        }
+      }
+    },
+    "startTime": {
+      "type": "string",
+      "format":"date-time"
+    },
+    "adGroupId": {
+      "type": "integer"
+    },
+    "keywordId": {
+      "type": "integer"
+    },
+    "campaignId": {
+      "type": "integer"
+    },
+    "searchTermText": {
+      "type": ["null","string"]
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "impressions": {
+          "type": "integer"
+        },
+        "taps": {
+          "type": "integer"
+        },
+        "installs": {
+          "type": "integer"
+        },
+        "newDownloads": {
+          "type": "integer"
+        },
+        "redownloads": {
+          "type": "integer"
+        },
+        "latOnInstalls": {
+          "type": "integer"
+        },
+        "latOffInstalls": {
+          "type": "integer"
+        },
+        "ttr": {
+          "type": "number"
+        },
+        "avgCPA": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            }
+          }
+        },
+        "avgCPT": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency": {
+              "type": "string"
+            }
+          }
+        },
+        "localSpend": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            }
+          }
+        },
+        "conversionRate": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string",
+          "format":"date-time"
+        }
+      }
+    }
+  }
+}
