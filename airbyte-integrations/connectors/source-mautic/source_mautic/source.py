@@ -749,6 +749,87 @@ class EmailEvents(IncrementalMauticStream):
 
         return {self.cursor_field: updated_state}
 
+class CampaignEvents(MauticStream):
+
+    primary_key = "event_id"
+    limit = 50
+    start = 0
+
+    def __init__(self,url_base="",**kwargs):
+        super().__init__(**kwargs)
+        self.url_base = url_base
+
+    def path(self, **kwargs) -> str:
+
+        return "campaigns"
+
+    def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
+
+        response_data = response.json()
+        self.total_records = int(response_data["total"])
+
+        if int(response_data["total"]) >= self.start:
+            self.start+=self.limit
+            return {"start": self.start}
+        else:
+            return None
+
+    def request_params(self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, Any] = None, next_page_token: Mapping[str, Any] = None) -> MutableMapping[str, Any]:
+
+        params = super().request_params(stream_state, stream_slice, next_page_token)
+
+        if next_page_token:
+            params.update(next_page_token)
+
+        params['limit'] = self.limit
+
+        return params
+
+    def flatteningJSON(self,b):
+        ans = {}
+        def flat(i, na =''):
+            #nested key-value pair: dict type
+            if type(i) is dict:
+                for a in i:
+                    flat(i[a], na + a + '_')
+            #nested key-value pair: list type
+            # elif type(i) is list:
+            #     j = 0
+            #     for a in i:
+            #         flat(a, na + str(j) + '_')
+            #         j += 1
+            else:
+                ans[na[:-1]] = i
+        flat(b)
+        return ans
+
+    def empty_str_to_none(self,items):
+        return {k: None if v=='' else v for k, v in items}
+
+    def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
+
+        response_dict = []
+
+        response_json = response.json()["campaigns"]
+
+        for campaign_id in response_json:
+
+            event = dict()
+            event['campaign_id'] = campaign_id
+            event['campaign_updated_at'] = max(response_json[campaign_id]['dateModified'] or '1970-01-01 00:00:00',response_json[campaign_id]['dateAdded'])
+            event['campaign_date_modified'] = response_json[campaign_id]['dateModified']
+            event['campaign_date_added'] = response_json[campaign_id]['dateAdded']
+            for event_data in response_json[campaign_id]['events']:
+                event['event'] = event_data
+
+                # in order to avoid empty strings as numeric values
+                event = self.flatteningJSON(event)
+                event = json.dumps(event)
+                event = json.loads(event,object_pairs_hook=self.empty_str_to_none)
+                response_dict.append(event)
+
+        yield from response_dict
+
 class DoNotContactEvents(IncrementalMauticStream):
 
     cursor_field = "timestamp"
@@ -1021,6 +1102,7 @@ class SourceMautic(AbstractSource):
         url_base = f'{config["host"].strip(" /")}/api'
         args = {"limit": 2000}
         return [
+                CampaignEvents(authenticator=auth, url_base=url_base),
                 Contacts(authenticator=auth,start_date=config['start_date'],url_base=url_base,**args),
                 EmailEvents(authenticator=auth,start_date=config['start_date'],url_base=url_base,**args),
                 PageHitStats(authenticator=auth,start_date=config['start_date'],url_base=url_base,**args),
