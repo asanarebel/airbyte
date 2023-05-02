@@ -14,6 +14,7 @@ connectionSpecification:
       type: string
       description: Your Mautic host URL
       pattern: ^[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$
+      order: 0
     start_date:
       title: Start Date
       type: string
@@ -21,13 +22,15 @@ connectionSpecification:
       pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$
       examples:
         - 2022-01-01 00:00:00
+      order: 3
     username:
       title: User Name
       type: string
       description: >-
         A user that has API access
+      order: 1
     password:
       title: Password
       type: string
       airbyte_secret: true
-    
+      order: 2
