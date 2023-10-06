@@ -963,6 +963,13 @@ class Contacts(IncrementalMauticStream):
 
             # add updated_at
             data['updated_at'] = max(data['dateAdded'],data['dateModified'] or '1970-01-01 00:00:00')
+
+
+            try:
+                if data['date_of_birth'] == '0000-00-00':
+                    data['date_of_birth'] = '1970-01-01'
+            except Exception as e:
+                pass
             response_dict.append(data)
 
         yield from response_dict
