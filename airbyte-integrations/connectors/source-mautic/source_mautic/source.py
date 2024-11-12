@@ -842,7 +842,7 @@ class Contacts(IncrementalMauticStream):
         super().__init__(**kwargs)
         self.url_base = url_base
         self.start_date = start_date
-        self.limit = 2000
+        self.limit = 1000
 
     def path(self, **kwargs) -> str:
 
@@ -1026,7 +1026,7 @@ class SourceMautic(AbstractSource):
         """
         auth = BasicHttpAuthenticator(username=config["username"], password=config["password"])
         url_base = f'{config["host"].strip(" /")}/api'
-        args = {"limit": 2000}
+        args = {"limit": 1000}
         return [
                 Contacts(authenticator=auth,start_date=config['start_date'],url_base=url_base,**args),
                 EmailEvents(authenticator=auth,start_date=config['start_date'],url_base=url_base,**args),

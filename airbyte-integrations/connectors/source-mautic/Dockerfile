@@ -1,4 +1,4 @@
-FROM python:3.9.13-alpine3.15 as base
+FROM --platform=linux/amd64 python:3.9.13-alpine3.15 as base
 
 # build and load all requirements
 FROM base as builder
@@ -10,9 +10,14 @@ RUN apk --no-cache upgrade \
     && apk --no-cache add tzdata build-base
 
 
+
+
 COPY setup.py ./
 # install necessary packages to a temporary folder
-RUN pip install --prefix=/install .
+
+# fix cython 3.0 and pyyaml 3.4.1 issue
+RUN echo "cython<3" > /tmp/constraint.txt
+RUN PIP_CONSTRAINT=/tmp/constraint.txt pip install --prefix=/install .
 
 # build a clean environment
 FROM base
@@ -30,6 +35,8 @@ RUN apk --no-cache add bash
 # copy payload code only
 COPY main.py ./
 COPY source_mautic ./source_mautic
+
+
 
 ENV AIRBYTE_ENTRYPOINT "python /airbyte/integration_code/main.py"
 ENTRYPOINT ["python", "/airbyte/integration_code/main.py"]

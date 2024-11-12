@@ -51,7 +51,7 @@ setup(
         "jsonref~=0.2",
         "pendulum",
         "pydantic~=1.9.2",
-        "PyYAML~=5.4",
+        "PyYAML~=5.3.1",
         "requests",
         "vcrpy",
         "Deprecated~=1.2",
